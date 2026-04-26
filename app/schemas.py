@@ -23,6 +23,16 @@ class AdminRead(UserRead):
     pass
 
 
+class LoginRequest(BaseModel):
+    email: EmailStr
+    password: str
+
+
+class TokenRead(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
+
+
 class AccountBase(BaseModel):
     user_id: int
     balance: Decimal = Decimal("0.0")
@@ -40,7 +50,6 @@ class AccountRead(AccountBase):
 
 
 class PaymentBase(BaseModel):
-    id: int
     transaction_id: str
     account_id: int
     amount: Decimal
@@ -51,9 +60,6 @@ class PaymentBase(BaseModel):
 
 class PaymentRead(PaymentBase):
     id: int
-
-    class Config:
-        from_attributes = True
 
 
 class WebhookPayload(BaseModel):
