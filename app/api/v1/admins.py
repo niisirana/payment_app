@@ -15,7 +15,7 @@ from app.models import Admin, User
 from app.database import get_db
 from app.core.security import get_password_hash
 
-router = APIRouter(prefix="/admins")
+router = APIRouter(prefix="/admins", tags=["admins"])
 
 
 @router.get("/me", response_model=AdminRead)

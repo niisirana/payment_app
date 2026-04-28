@@ -7,7 +7,7 @@ from app.schemas import UserRead, AccountRead, PaymentRead
 from app.models import User, Account, Payment
 from app.database import get_db
 
-router = APIRouter(prefix="/users")
+router = APIRouter(prefix="/users", tags=["users"])
 
 
 @router.get("/me", response_model=UserRead)
