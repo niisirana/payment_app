@@ -11,7 +11,7 @@ router = APIRouter(prefix="/auth", tags=["auth"])
 
 
 @router.post("/user/login", response_model=TokenRead)
-async def user_login(data: LoginRequest, db: AsyncSession = Depends(get_db)):
+async def login_user(data: LoginRequest, db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(User).where(User.email == data.email))
     user = result.scalar_one_or_none()
 
@@ -27,7 +27,7 @@ async def user_login(data: LoginRequest, db: AsyncSession = Depends(get_db)):
 
 
 @router.post("/admin/login", response_model=TokenRead)
-async def admin_login(data: LoginRequest, db: AsyncSession = Depends(get_db)):
+async def login_admin(data: LoginRequest, db: AsyncSession = Depends(get_db)):
     result = await db.execute(select(Admin).where(Admin.email == data.email))
     admin = result.scalar_one_or_none()
 

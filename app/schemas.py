@@ -19,6 +19,16 @@ class UserRead(UserBase):
         from_attributes = True
 
 
+class UserWithAccountsRead(UserRead):
+    accounts: list[AccountRead] = []
+
+
+class UserUpdate(BaseModel):
+    email: EmailStr | None = None
+    full_name: str | None = None
+    password: str | None = None
+
+
 class AdminRead(UserRead):
     pass
 
