@@ -47,7 +47,7 @@ async def create_user(
 
     if existing_user:
         raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST, detail="user already exists"
+            status_code=status.HTTP_400_BAD_REQUEST, detail="User already exists"
         )
 
     hashed_password = get_password_hash(data.password)
